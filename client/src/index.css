@@ -1,68 +1,139 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Reset básico y Tipografía */
+* {
+  box-sizing: border-box;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Header & Status */
+.header {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 20px;
 }
-
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  margin: 0;
+  font-size: 1.8rem;
+  color: #2c3e50;
 }
 
-button {
+/* El Indicador (Clave para la prueba) */
+.status-badge {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: white;
+  transition: background 0.3s;
+}
+.online {
+  background-color: #27ae60;
+  box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+}
+.offline {
+  background-color: #c0392b;
+  box-shadow: 0 4px 10px rgba(192, 57, 43, 0.3);
+}
+
+/* Botones */
+.btn-add {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: transform 0.2s;
+  display: block;
+  margin-bottom: 25px;
+  font-weight: 600;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.btn-add:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Grid y Cartas */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.empty-msg {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 1.2rem;
+  margin-top: 40px;
+}
+
+.note-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+  border: 1px solid #eee;
+}
+.note-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-color: #3498db;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  border: none;
+  resize: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #2c3e50;
+  line-height: 1.5;
+  background: transparent;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #f0f0f0;
+}
+.timestamp {
+  font-size: 0.75rem;
+  color: #95a5a6;
+}
+
+.btn-delete {
+  background: white;
+  border: 1px solid #e74c3c;
+  color: #e74c3c;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+.btn-delete:hover {
+  background: #e74c3c;
+  color: white;
 }

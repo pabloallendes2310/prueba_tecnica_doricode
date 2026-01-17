@@ -1,24 +1,30 @@
 import mongoose from "mongoose";
 
-const NoteSchema = new mongoose.Schema({
-  id: {
-    type: String,
-    required: true,
-    unique: true,
-    index: true,
+const NoteSchema = new mongoose.Schema(
+  {
+    id: {
+      type: String,
+      required: true,
+      unique: true,
+      index: true,
+    },
+    content: {
+      type: String,
+      default: "",
+    },
+    updatedAt: {
+      type: Number,
+      required: true,
+    },
+    isDeleted: {
+      type: Boolean,
+    },
   },
-  content: {
-    type: String,
-    default: "",
-  },
-  updatedAt: {
-    type: Number,
-    required: true,
-  },
-  deletedAt: {
+  {
     timestamps: false,
     versionKey: false,
+    _id: true,
   },
-});
+);
 
-export const NoteMode = mongoose.model("Note", NoteSchema);
+export const NoteModel = mongoose.model("Note", NoteSchema);
